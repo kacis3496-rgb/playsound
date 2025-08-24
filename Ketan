@@ -1,0 +1,29 @@
+from gtts import gTTS
+import pygame
+import time
+import os
+
+# النص تاع النشيد
+nasheed = """
+يا كِيان العزّ قد لاح فجرُك
+رايتُك في العالي ترفرفُ بالنور
+أقسمنا أن نحيا ونموت في سبيلك
+أرضُك في القلب، وعزّك في الصدور
+"""
+
+# حفظ الملف في الذاكرة الداخلية
+file_path = "/sdcard/nasheed.mp3"
+tts = gTTS(text=nasheed, lang="ar")
+tts.save(file_path)
+print("✅ تم إنشاء الملف nasheed.mp3 في الذاكرة الداخلية")
+
+# تشغيل الصوت مباشرة
+pygame.mixer.init()
+pygame.mixer.music.load(file_path)
+pygame.mixer.music.play()
+
+# خليه يستنى حتى يكمل
+while pygame.mixer.music.get_busy():
+    time.sleep(1)
+
+print("🎶 انتهى التشغيل")
