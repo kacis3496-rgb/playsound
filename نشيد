@@ -1,0 +1,16 @@
+from gtts import gTTS
+from playsound import playsound
+
+nasheed = """
+يا كِيان العزّ قد لاح فجرُك
+رايتُك في العالي ترفرفُ بالنور
+أقسمنا أن نحيا ونموت في سبيلك
+أرضُك في القلب، وعزّك في الصدور
+"""
+
+file_path = "/sdcard/nasheed.mp3"
+tts = gTTS(text=nasheed, lang="ar")
+tts.save(file_path)
+
+print("✅ الملف جاهز ... جاري التشغيل 🎶")
+playsound(file_path)
